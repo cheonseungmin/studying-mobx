@@ -1,24 +1,28 @@
 import React from 'react';
 
-export interface ContextInterface {
+export interface CountContextInterface {
     count: number;
     setCount: (currentCount: number) => void;
-    examplePageProp: string;
-    time: {
-      hour: number,
-      minute: number
-    };
-    setTime: (newTime: {
-      hour: number,
-      minute: number
-    }) => void;
-    setHourMinute: (newHour?: number, newMinute?: number) => void;
 }
 
-const Context = React.createContext<ContextInterface>({
+export const CountContext = React.createContext<CountContextInterface>({
   count: 0,
   setCount: () => {},
-  examplePageProp: '',
+});
+
+export interface TimeContextInterface {
+  time: {
+    hour: number,
+    minute: number
+  };
+  setTime: (newTime: {
+    hour: number,
+    minute: number
+  }) => void;
+  setHourMinute: (newHour?: number, newMinute?: number) => void;
+}
+
+export const TimeContext = React.createContext<TimeContextInterface>({
   time: {
     hour: 0,
     minute: 0
@@ -27,4 +31,3 @@ const Context = React.createContext<ContextInterface>({
   setHourMinute: () => {},
 });
 
-export default Context;

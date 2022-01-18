@@ -1,20 +1,18 @@
 import React, { useContext } from 'react';
 
-import Context from './Context';
+import { TimeContext } from './Context'
 
 interface Props {
-  exampleFooterProp: string
 }
 
 const FooterComponent: React.FC<Props> = ({
-  exampleFooterProp
 }) => {
 
   const {
     time,
     setTime,
     setHourMinute
-  } = useContext(Context);
+  } = useContext(TimeContext);
 
   console.log('FooterComponent render');
 

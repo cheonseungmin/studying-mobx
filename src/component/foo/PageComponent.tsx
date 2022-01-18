@@ -1,48 +1,57 @@
 import React, { useMemo } from 'react';
 import { observer, useLocalObservable } from 'mobx-react';
-import Context, { ContextInterface } from './Context';
-import Store from './Store';
+import { CountContext, CountContextInterface, TimeContext, TimeContextInterface  } from './Context';
+import { HeaderComponent, ContentComponent, FooterComponent } from '.';
+import {CountStore, TimeStore} from './Store';
 
 interface Props {
-  examplePageProp: string
 }
 
-const PageComponent: React.FC<Props> = observer(({
-  examplePageProp,
-  ...rest
-}) => {
-  const {
-    children
-  } = rest;
+const PageComponent: React.FC<Props> = observer(() => {
 
   const {
     count,
-    setCount,
+    setCount
+  } = CountStore.instance;
+
+  const {
     time,
     setTime,
     setHourMinute
-  } = useLocalObservable(() => Store.instance);
+  } = TimeStore.instance;
 
-  const ContextModel: ContextInterface = useMemo(() => ({
+  
+
+  const CountContextModel: CountContextInterface = useMemo(() => ({
     count,
     setCount,
-    examplePageProp,
+  }), [
+    count,
+    setCount
+  ]);
+
+  const TimeContextModel: TimeContextInterface = useMemo(() => ({
     time,
     setTime,
     setHourMinute
   }), [
-    count,
-    setCount,
-    examplePageProp,
     time,
     setTime,
     setHourMinute
   ]);
 
+  console.log('PageComponent render');
+
   return (
-    <Context.Provider value={ContextModel}>
-      {children}
-    </Context.Provider>
+    <>
+    <CountContext.Provider value={CountContextModel}>
+      <HeaderComponent />
+      <ContentComponent />
+    </CountContext.Provider>
+    <TimeContext.Provider value={TimeContextModel}>
+      <FooterComponent />
+    </TimeContext.Provider>
+    </>
   );
 });
 

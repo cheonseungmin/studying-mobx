@@ -1,19 +1,16 @@
 import React from 'react';
 import { useContext } from 'react';
-import { findFooData } from './Api';
-import Context from './Context';
+import {CountContext} from './Context';
 
 interface Props {
-  exampleHeaderProp: string
 }
 
 const HeaderComponent: React.FC<Props> = ({
-  exampleHeaderProp
 }) => {
   const {
     count,
     setCount
-  } = useContext(Context);
+  } = useContext(CountContext);
 
   const onClickButton = (currentCount: number) => {
     setCount(currentCount + 1);
