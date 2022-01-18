@@ -17,17 +17,26 @@ const PageComponent: React.FC<Props> = observer(({
 
   const {
     count,
-    setCount
+    setCount,
+    time,
+    setTime,
+    setHourMinute
   } = useLocalObservable(() => Store.instance);
 
   const ContextModel: ContextInterface = useMemo(() => ({
     count,
     setCount,
-    examplePageProp
+    examplePageProp,
+    time,
+    setTime,
+    setHourMinute
   }), [
     count,
     setCount,
-    examplePageProp
+    examplePageProp,
+    time,
+    setTime,
+    setHourMinute
   ]);
 
   return (
