@@ -1,18 +1,21 @@
+import { observer } from 'mobx-react';
 import React, { useContext } from 'react';
+import { useMemo } from 'react';
 
-import { TimeContext } from './Context'
+import { TimeContext, TimeContextInterface } from './Context'
+import { TimeStore } from './Store';
 
 interface Props {
 }
 
-const FooterComponent: React.FC<Props> = ({
+const FooterComponent: React.FC<Props> = observer(({
 }) => {
 
   const {
     time,
     setTime,
     setHourMinute
-  } = useContext(TimeContext);
+  } = TimeStore.instance;
 
   console.log('FooterComponent render');
 
@@ -37,7 +40,7 @@ const FooterComponent: React.FC<Props> = ({
           onClick={() => {
             addOneHourByTime(time.hour)
           }}
-        >
+          >
           add Time observarble
         </button>
         <button
@@ -45,13 +48,13 @@ const FooterComponent: React.FC<Props> = ({
           onClick={() => {
             addOneHourByHour(time.hour + 1)
           }}
-        >
+          >
           add Hour observarble
         </button>
       </div>
     </>
   );
-};
+});
 
 
 export default FooterComponent;

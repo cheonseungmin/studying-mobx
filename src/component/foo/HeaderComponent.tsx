@@ -1,16 +1,20 @@
+import { observer } from 'mobx-react';
 import React from 'react';
+import { useMemo } from 'react';
 import { useContext } from 'react';
-import {CountContext} from './Context';
+import {CountContext, CountContextInterface} from './Context';
+import { CountStore } from './Store';
 
 interface Props {
 }
 
-const HeaderComponent: React.FC<Props> = ({
+const HeaderComponent: React.FC<Props> = observer(({
 }) => {
+
   const {
     count,
     setCount
-  } = useContext(CountContext);
+  } = CountStore.instance;
 
   const onClickButton = (currentCount: number) => {
     setCount(currentCount + 1);
@@ -31,7 +35,7 @@ const HeaderComponent: React.FC<Props> = ({
       </div>
     </>
   );
-};
+});
 
 
 export default HeaderComponent;
