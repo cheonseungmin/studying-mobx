@@ -1,22 +1,30 @@
 import React, { useMemo } from 'react';
 import { observer, useLocalObservable } from 'mobx-react';
-import { CountContext, CountContextInterface, TimeContext, TimeContextInterface  } from './Context';
-import { HeaderComponent, ContentComponent, FooterComponent } from '.';
-import {CountStore, TimeStore} from './Store';
+import Context, { ContextInterface } from './Context';
+import Store from './Store';
 
 interface Props {
+  examplePageProp: string
 }
 
-const PageComponent: React.FC<Props> = observer(() => {
+const PageComponent: React.FC<Props> = observer(({
+  examplePageProp,
+  ...rest
+}) => {
+  const {
+    children
+  } = rest;
 
-  console.log('PageComponent render');
+  const ContextModel: ContextInterface = useMemo(() => ({
+    examplePageProp
+  }), [
+    examplePageProp
+  ]);
 
   return (
-    <>
-      <HeaderComponent />
-      <ContentComponent />
-      <FooterComponent />
-    </>
+    <Context.Provider value={ContextModel}>
+      {children}
+    </Context.Provider>
   );
 });
 

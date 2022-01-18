@@ -1,9 +1,6 @@
 import { observer } from 'mobx-react';
-import React, { useContext } from 'react';
-import { useMemo } from 'react';
-
-import { TimeContext, TimeContextInterface } from './Context'
-import { TimeStore } from './Store';
+import React from 'react';
+import Store from './Store';
 
 interface Props {
 }
@@ -15,7 +12,7 @@ const FooterComponent: React.FC<Props> = observer(({
     time,
     setTime,
     setHourMinute
-  } = TimeStore.instance;
+  } = Store.instance;
 
   console.log('FooterComponent render');
 
