@@ -1,5 +1,7 @@
 import React from 'react';
+import { useContext } from 'react';
 import { findFooData } from './Api';
+import Context from './Context';
 
 interface Props {
   exampleHeaderProp: string
@@ -8,20 +10,26 @@ interface Props {
 const HeaderComponent: React.FC<Props> = ({
   exampleHeaderProp
 }) => {
-  const onClickButton = (param: string) => {
-    findFooData(param);
+  const {
+    count,
+    setCount
+  } = useContext(Context);
+
+  const onClickButton = (currentCount: number) => {
+    setCount(currentCount + 1);
   };
+
+  console.log('HeaderComponent render');
+
   return (
     <>
       <div>
-        Foo
-        {exampleHeaderProp}
-        Component
+        HeaderComponent Count: {count}
         <button
           type="button"
-          onClick={() => onClickButton(exampleHeaderProp)}
+          onClick={() => onClickButton(count)}
         >
-          requestTest
+          renderTest
         </button>
       </div>
     </>

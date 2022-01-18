@@ -9,27 +9,15 @@ const ContentComponent: React.FC<Props> = ({
   exampleContentProp
 }) => {
   const {
-    count,
-    setCount,
-    examplePageProp
+    count
   } = useContext(Context);
 
-  const addOneToCount = (currentCount: number) => {
-    setCount(currentCount + 1);
-  };
+  console.log('ContentComponent render');
 
   return (
     <>
       <div>
-        {examplePageProp}
-        {exampleContentProp}
-        Component
-        <button
-          type="button"
-          onClick={() => addOneToCount(count)}
-        >
-          count
-        </button>
+        ContentComponent Count: {count}
       </div>
     </>
   );

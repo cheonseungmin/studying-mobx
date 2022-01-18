@@ -9,19 +9,13 @@ interface Props {
 const FooterComponent: React.FC<Props> = ({
   exampleFooterProp
 }) => {
-  const {
-    count
-  } = useContext(Context);
+
+  console.log('FooterComponent render');
 
   return (
     <>
       <div>
-        Foo
-        {exampleFooterProp}
-        Component
-        Count:
-        {' '}
-        {count}
+        FooterComponent don't Count
       </div>
     </>
   );
