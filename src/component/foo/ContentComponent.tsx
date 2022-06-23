@@ -1,20 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-interface Props {
-}
+interface Props {}
 
-const ContentComponent: React.FC<Props> = ({
-}) => {
+const ContentComponent: React.FC<Props> = ({}) => {
+	console.log("ContentComponent render");
 
-  console.log('ContentComponent render');
-
-  return (
-    <>
-      <div>
-        ComtentComponent doesn't have Context
-      </div>
-    </>
-  );
+	return <>Content</>;
 };
 
 export default ContentComponent;

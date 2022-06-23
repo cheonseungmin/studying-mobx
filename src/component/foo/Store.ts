@@ -1,33 +1,21 @@
-
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable } from "mobx";
 
 class Store {
-  static instance: Store;
-  count: number = 0;
-  time = {
-    hour: 0,
-    minute: 0
-  }
+	static instance: Store;
+	a: string = "a";
+	b: string = "b";
 
-  constructor() {
-    makeAutoObservable(this);
-  }
+	constructor() {
+		makeAutoObservable(this);
+	}
 
-  setCount = (newCount: number): void => {
-    this.count = newCount;
-  };
+	setA = (value: string): void => {
+		this.a = value;
+	};
 
-  setTime = (newTime: {
-    hour: number,
-    minute: number
-  }) => {
-    this.time = newTime;
-  }
-
-  setHourMinute = (newHour?: number, newMinute?: number) => {
-    if(newHour) this.time.hour = newHour;
-    if(newMinute) this.time.minute = newMinute;
-  }
+	setB = (value: string): void => {
+		this.b = value;
+	};
 }
 
 Store.instance = new Store();

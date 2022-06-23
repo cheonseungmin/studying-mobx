@@ -1,38 +1,26 @@
-import { observer } from 'mobx-react';
-import React from 'react';
-import Store from './Store';
+import { observer } from "mobx-react";
+import React from "react";
+import Store from "./Store";
 
-interface Props {
-}
+interface Props {}
 
-const HeaderComponent: React.FC<Props> = observer(({
-}) => {
+const HeaderComponent: React.FC<Props> = observer(({}) => {
+	const { a, b, setA, setB } = Store.instance;
 
-  const {
-    count,
-    setCount
-  } = Store.instance;
+	const onClickButton = () => {
+		setA(a + "a");
+		setB(b + "b");
+	};
 
-  const onClickButton = (currentCount: number) => {
-    setCount(currentCount + 1);
-  };
-
-  console.log('HeaderComponent render');
-
-  return (
-    <>
-      <div>
-        HeaderComponent Count: {count}
-        <button
-          type="button"
-          onClick={() => onClickButton(count)}
-        >
-          renderTest
-        </button>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div>
+				<button type="button" onClick={onClickButton}>
+					useEffect test
+				</button>
+			</div>
+		</>
+	);
 });
-
 
 export default HeaderComponent;
