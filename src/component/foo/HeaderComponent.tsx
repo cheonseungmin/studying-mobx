@@ -1,10 +1,9 @@
 import { observer } from "mobx-react";
 import React from "react";
+import ContentComponent from "./ContentComponent";
 import Store from "./Store";
 
-interface Props {}
-
-const HeaderComponent: React.FC<Props> = observer(({}) => {
+const HeaderComponent = observer(() => {
 	const { a, b, setA, setB } = Store.instance;
 
 	const onClickButton = () => {
@@ -12,12 +11,18 @@ const HeaderComponent: React.FC<Props> = observer(({}) => {
 		setB(b + "b");
 	};
 
+	console.log("render Header");
+
 	return (
 		<>
 			<div>
 				<button type="button" onClick={onClickButton}>
 					useEffect test
 				</button>
+				<br />
+				Header
+				<br />
+				<ContentComponent />
 			</div>
 		</>
 	);

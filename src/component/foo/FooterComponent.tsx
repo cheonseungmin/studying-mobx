@@ -4,15 +4,20 @@ import Store from "./Store";
 
 interface Props {}
 
-const FooterComponent: React.FC<Props> = observer(({}) => {
+const FooterComponent = observer(() => {
 	const { a, b } = Store.instance;
 
 	useEffect(() => {
-		console.log("a: ", a);
-		console.log("b: ", b);
+		console.log("render Footer");
 	}, [a, b]);
 
-	return <>footer</>;
+	console.log("render Footer");
+
+	return (
+		<>
+			<div>Footer</div>
+		</>
+	);
 });
 
 export default FooterComponent;
